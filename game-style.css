@@ -1,0 +1,188 @@
+/* --- Global Game Setup --- */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    /* Allow scrolling/viewport flexibility if content overflows */
+    overflow-y: auto; 
+}
+
+.game-container {
+    /* Use max-width for responsiveness, ensuring it fits well on mobile */
+    max-width: 95vw; 
+    width: 800px; /* Base desktop width */
+    position: relative;
+    box-shadow: 0 0 30px rgba(71, 14, 150, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    /* Ensure it doesn't take up too much vertical space if the screen is short */
+    max-height: 95vh; 
+}
+
+/* --- Header & Score --- */
+.header-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: 10;
+}
+
+.header-bar span {
+    font-size: 1.2rem; /* Reduced default font size */
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    width: 30%;
+    text-align: center;
+}
+
+/* --- Canvas Styling --- */
+#gameCanvas {
+    background: linear-gradient(145deg, #1e1e3f, #3a0050);
+    display: block;
+    border: 5px solid #6c2f9d;
+    border-radius: 15px;
+    /* Adjust margin based on screen size */
+    margin-top: 50px; 
+    width: 100%; /* Make canvas fill container width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* --- Icons --- */
+.pause-icon {
+    font-size: 2rem; /* Smaller pause icon */
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: color 0.2s;
+    flex-grow: 1; 
+    text-align: center;
+}
+
+.pause-icon:hover {
+    color: white;
+}
+
+.control-icon {
+    font-size: 3rem; /* Smaller control icons for mobile */
+    margin: 0 10px; /* Reduced margin */
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.control-icon:hover {
+    transform: scale(1.1);
+}
+
+.resume-icon { color: #4CAF50; }
+.exit-icon { color: #f44336; } 
+.restart-icon { color: #ff9800; } 
+
+
+/* --- Overlays --- */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Start Icon */
+.start-icon {
+    width: 100px; /* Smaller icon for mobile */
+    height: 100px;
+    cursor: pointer;
+    
+    border-radius: 50%;
+    object-fit: cover; 
+    border: 5px solid #ffeb3b; 
+    
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Game Over Slogan */
+#winnerSlogan {
+    font-size: 1.8rem; /* Reduced font size for mobile */
+    color: #ffeb3b;
+    margin-bottom: 20px; 
+    text-shadow: 0 0 10px #ffeb3b;
+    padding: 0 10px;
+}
+
+/* Game Buttons */
+.game-button {
+    padding: 10px 20px; /* Smaller padding */
+    margin: 8px; 
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem; /* Smaller font size */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+#playAgainButton {
+    background-color: #00bcd4;
+    color: white;
+}
+
+#exitButton {
+    background-color: #9c27b0;
+    color: white;
+}
+
+/* Media Query for larger screens: Reverts styles for desktop view */
+@media (min-width: 768px) {
+    .header-bar span {
+        font-size: 1.4rem;
+    }
+    .pause-icon {
+        font-size: 2.5rem;
+    }
+    .control-icon {
+        font-size: 4rem;
+        margin: 0 20px;
+    }
+    .start-icon {
+        width: 150px;
+        height: 150px;
+    }
+    #winnerSlogan {
+        font-size: 2.5rem;
+    }
+    .game-button {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+    }
+}

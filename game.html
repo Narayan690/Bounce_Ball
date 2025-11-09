@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounce Ball</title>
+    <link rel="stylesheet" href="game-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="game-container">
+        
+        <div class="header-bar">
+            <span id="player1Score">Player 1: 0</span>
+            <i class="fas fa-pause-circle pause-icon" id="pauseButton"></i>
+            <span id="player2Score">Player 2: 0</span>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+        
+        <audio id="winSound" src="Win.mp3"></audio>
+
+        <div class="overlay" id="startOverlay">
+            <img src="start-icon.png" alt="Start Game" id="startButton" class="start-icon">
+        </div>
+
+        <div class="overlay hidden" id="pauseOverlay">
+            <h3>Game Paused</h3>
+            <div class="pause-controls">
+                <i class="fas fa-play-circle control-icon resume-icon" id="resumeButton"></i>
+                <i class="fas fa-redo-alt control-icon restart-icon" id="restartButtonPause"></i>
+                <i class="fas fa-times-circle control-icon exit-icon" id="exitButtonPause"></i>
+            </div>
+        </div>
+
+        <div class="overlay hidden" id="gameOverOverlay">
+            <h2 id="winnerSlogan"></h2>
+            <button id="playAgainButton" class="game-button">Play Again</button>
+            <button id="exitButton" class="game-button">Exit to Home</button>
+        </div>
+    </div>
+
+    <script src="game-script.js"></script>
+</body>
+</html>
